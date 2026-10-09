@@ -356,51 +356,83 @@ section{position:relative}
   .swipe-dots{display:flex}
 }
 
-/* ===== 5. REVIEWS ===== */
-.reviews{background:var(--surface)}
+/* ===== 5. REVIEWS: case files ===== */
+.reviews{background:linear-gradient(180deg,var(--surface) 0%,var(--surface) 70%,var(--surface-2) 100%);overflow:hidden}
 .reviews .eyebrow{color:var(--blue)}
-.rev-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,5vw,70px);align-items:start;margin-top:10px}
-.rev-grid > *{min-width:0}
-.rev-side{position:sticky;top:100px}
-.score{border-radius:28px;background:var(--navy);color:#fff;padding:28px;position:relative;overflow:hidden}
-.score::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(69,208,230,.35),transparent 70%)}
-.score .big{font-family:var(--serif);font-size:96px;line-height:.85;font-weight:600}
-.score .stars{font-size:22px;letter-spacing:3px;display:block;margin:10px 0 8px}
-.score p{margin:0;opacity:.85;font-size:15px}
-.plats{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
-.plats span{padding:7px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.25);font-size:12.5px;font-weight:800;letter-spacing:.06em}
-.rev-vid{margin-top:16px;display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:center;padding:12px;border-radius:22px;background:var(--surface-2);border:1px solid var(--line)}
-.rev-vid .v{border-radius:14px;overflow:hidden;aspect-ratio:9/16;position:relative;background:#0a1a3a}
-.rev-vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.rev-vid p{margin:0;font-family:var(--serif);font-size:19px;line-height:1.3;color:var(--text)}
-.rev-vid small{display:block;margin-top:8px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
-.rev-list{display:grid;gap:16px}
-.rev{background:var(--surface-2);border:1px solid var(--line);border-radius:24px;padding:clamp(22px,2.6vw,32px);box-shadow:0 24px 50px -36px rgba(10,30,70,.4);position:relative}
-.rev .qm{position:absolute;right:22px;top:6px;font-family:var(--serif);font-size:110px;line-height:1;color:var(--aqua);opacity:.35}
-.rev .top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-.rev .av{width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:800;font-size:16px;flex:none}
-.rev .who b{display:block;font-size:15.5px;color:var(--text)}
-.rev .who span{font-size:13px;color:var(--text-2)}
-.rev .who .stars{font-size:13px;color:var(--sun)}
-.rev h3{font-family:var(--serif);font-weight:600;font-size:clamp(1.35rem,2vw,1.7rem);line-height:1.15;margin:4px 0 10px;color:var(--text);padding-right:30px}
-.rev p{margin:0;color:var(--text-2);font-size:15.5px}
-.rev mark{background:linear-gradient(transparent 58%,rgba(69,208,230,.55) 58%) no-repeat 0 0/0% 100%;color:var(--text);transition:background-size 1.2s var(--ease) .3s;padding:0 2px}
-.rev.in mark{background-size:100% 100%}
-.rev .src{margin-top:14px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
-.rev-dots{display:none;justify-content:center;gap:8px;margin-top:14px}
-.rev-dots i{width:8px;height:8px;border-radius:8px;background:var(--line);transition:all .3s}
-.rev-dots i.on{width:26px;background:var(--blue)}
+.rev-head{display:flex;justify-content:space-between;align-items:end;gap:18px 40px;flex-wrap:wrap}
+.rating-pill{display:flex;align-items:center;gap:14px;padding:12px 18px 12px 14px;border-radius:999px;background:var(--navy);color:#fff;box-shadow:0 20px 40px -24px rgba(10,45,124,.8);margin-bottom:.6em}
+.rating-pill b{font-family:var(--serif);font-size:38px;line-height:1;font-weight:600}
+.rating-pill .stars{font-size:16px;display:block;letter-spacing:2px}
+.rating-pill small{display:block;font-size:12px;font-weight:700;opacity:.8;letter-spacing:.04em}
+.cases{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(20px,3.5vw,48px);margin-top:36px;align-items:stretch}
+.cases > *{min-width:0}
+.stage{position:relative;border-radius:32px;overflow:hidden;min-height:520px;color:#fff;isolation:isolate;background:#04163d;box-shadow:0 50px 90px -45px rgba(5,23,55,.85)}
+.stage::before{content:"";position:absolute;inset:-20%;z-index:-2;background:radial-gradient(40% 40% at 30% 30%,rgba(69,208,230,.55),transparent 70%),radial-gradient(45% 45% at 75% 70%,rgba(29,87,209,.7),transparent 70%),radial-gradient(35% 35% at 60% 20%,rgba(165,240,251,.35),transparent 70%);filter:blur(10px);animation:drift 14s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate3d(6%,-4%,0) rotate(8deg) scale(1.08)}}
+.stage::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.35;background:repeating-radial-gradient(circle at 70% 120%,transparent 0 22px,rgba(255,255,255,.06) 23px 24px)}
+.stage video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;opacity:0;transition:opacity .6s}
+.stage.vid video{opacity:1}
+.stage.vid .stat,.stage.vid .stat-sub{opacity:0}
+.segs{position:absolute;top:16px;left:16px;right:16px;display:flex;gap:5px;z-index:3}
+.segs i{flex:1;height:3px;border-radius:3px;background:rgba(255,255,255,.3);overflow:hidden;position:relative}
+.segs i::after{content:"";position:absolute;inset:0;background:#fff;transform-origin:left;transform:scaleX(var(--f,0))}
+.who-chip{position:absolute;top:32px;left:16px;right:16px;display:flex;align-items:center;gap:10px;z-index:3;font-size:13.5px;font-weight:700}
+.who-chip .av{width:34px;height:34px;border-radius:50%;background:#fff;color:var(--navy);display:grid;place-items:center;font-weight:800;font-size:14px;box-shadow:0 0 0 2px var(--aqua)}
+.who-chip span{opacity:.75;font-weight:600}
+.who-chip .stars{margin-left:auto;font-size:13px}
+.stat-wrap{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:90px 32px 40px;z-index:2}
+.stat{font-family:var(--serif);font-weight:600;font-size:clamp(5rem,11vw,9.5rem);line-height:.85;letter-spacing:-.02em;transition:opacity .4s}
+.stat em{font-style:italic;font-weight:500;color:var(--aqua-2)}
+.stat-sub{font-size:clamp(1.05rem,1.6vw,1.35rem);font-weight:700;max-width:16em;margin-top:14px;line-height:1.35;transition:opacity .4s}
+.tap{position:absolute;top:0;bottom:0;width:35%;z-index:4;background:none;border:0;cursor:pointer}
+.tap.l{left:0}.tap.r{right:0}
+.swap{transition:opacity .35s ease,transform .45s var(--ease)}
+.swap.out{opacity:0;transform:translateY(12px)}
+.case{display:flex;flex-direction:column;background:var(--surface-2);border:1px solid var(--line);border-radius:32px;padding:clamp(22px,3vw,40px);box-shadow:0 30px 60px -40px rgba(10,30,70,.4)}
+.case .k{font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--blue)}
+.case h3{font-family:var(--serif);font-weight:600;font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.05;margin:.3em 0 .6em;color:var(--text)}
+.flow{list-style:none;margin:0 0 22px;padding:0;display:grid;gap:0;position:relative}
+.flow li{display:grid;grid-template-columns:34px 1fr;gap:14px;padding-bottom:16px;position:relative}
+.flow li::before{content:"";position:absolute;left:16px;top:30px;bottom:0;width:2px;background:linear-gradient(var(--aqua),transparent)}
+.flow li:last-child::before{display:none}
+.flow i{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:15px;font-weight:800}
+.flow li:nth-child(1) i{background:#efe6c8;color:#6d5a12}
+.flow li:nth-child(2) i{background:#d7ecff;color:var(--blue)}
+.flow li:nth-child(3) i{background:var(--aqua);color:var(--navy-900)}
+.flow b{display:block;font-size:11.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--text-2);margin-top:1px}
+.flow span{display:block;color:var(--text);font-size:15.5px;line-height:1.45;margin-top:2px}
+.case blockquote{margin:0;padding:18px 20px;border-radius:20px;background:var(--surface);border:1px solid var(--line);font-size:15px;line-height:1.6;color:var(--text-2);position:relative}
+.case blockquote::before{content:"“";position:absolute;right:14px;top:-18px;font-family:var(--serif);font-size:90px;line-height:1;color:var(--aqua);opacity:.6}
+.case blockquote mark{background:linear-gradient(transparent 58%,rgba(69,208,230,.55) 58%) no-repeat 0 0/0% 100%;color:var(--text);padding:0 2px;animation:hl 1.1s var(--ease) .5s forwards}
+@keyframes hl{to{background-size:100% 100%}}
+.case cite{display:flex;align-items:center;gap:8px;margin-top:12px;font-style:normal;font-size:13px;font-weight:700;color:var(--text-2)}
+.case cite .stars{font-size:13px}
+.case-nav{display:flex;align-items:center;gap:14px;margin-top:auto;padding-top:22px}
+.picks{display:flex;gap:8px;flex:1;flex-wrap:wrap}
+.pick{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 6px;border-radius:999px;border:1.5px solid var(--line);background:transparent;color:var(--text);font-weight:700;font-size:13px;transition:all .3s var(--ease)}
+.pick i{width:26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:800}
+.pick[aria-pressed="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.pick[aria-pressed="true"] i{background:var(--aqua);color:var(--navy-900)}
+.arrows{display:flex;gap:8px}
+.arrows button{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:var(--text);display:grid;place-items:center;transition:all .25s}
+.arrows button:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.arrows svg{width:18px}
+.ticker{margin-top:44px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.ticker-track{display:flex;gap:12px;width:max-content;animation:marq 46s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker span{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);font-family:var(--serif);font-style:italic;font-size:19px;color:var(--text);white-space:nowrap}
+.ticker span::before{content:"★";font-style:normal;font-family:var(--sans);color:var(--sun);font-size:14px}
 @media (max-width:900px){
-  .rev-grid{grid-template-columns:1fr}
-  .rev-side{position:relative;top:0}
-  .rev-list{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-inline:calc(var(--gut) * -1);padding:4px var(--gut) 10px;scrollbar-width:none;align-items:stretch}
-  .rev-list::-webkit-scrollbar{display:none}
-  .rev{flex:0 0 86%;scroll-snap-align:center}
-  .rev-dots{display:flex}
-  .score{display:grid;grid-template-columns:auto 1fr;gap:4px 18px;align-items:center;padding:22px}
-  .score .big{font-size:72px;grid-row:span 2}
-  .score .stars{margin:0}
-  .plats{grid-column:1/-1;margin-top:12px}
+  .cases{grid-template-columns:1fr}
+  .stage{min-height:330px;border-radius:26px}
+  .stat-wrap{padding:84px 24px 28px}
+  .stat{font-size:clamp(4.2rem,22vw,6rem)}
+  .case{border-radius:26px}
+  .case-nav{flex-direction:column;align-items:stretch}
+  .picks{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .picks::-webkit-scrollbar{display:none}
+  .pick{flex:none}
+  .arrows{justify-content:flex-end;display:none}
 }
 
 /* ===== 6. STORY ===== */
@@ -768,48 +800,35 @@ form.qf{background:rgba(255,255,255,.97);color:var(--ink);border-radius:30px;pad
 <!-- 5. REVIEWS -->
 <section class="reviews pad" id="reviews" aria-labelledby="rev-title">
   <div class="wrap">
-    <span class="eyebrow rv">Five stars, every time</span>
-    <h2 class="display rv d1" id="rev-title">When nobody else could fix it, <span class="it">they called Bryant.</span></h2>
-    <div class="rev-grid">
-      <aside class="rev-side rv">
-        <div class="score">
-          <div class="big">5.0</div>
-          <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
-          <p>Every single review on Google and Yelp is five stars.</p>
-          <div class="plats"><span>Google</span><span>Yelp</span><span>Instagram</span></div>
-        </div>
-        <div class="rev-vid">
-          <div class="v"><video data-src="assets/vid/review.mp4" poster="assets/vid/review.jpg" muted loop playsinline preload="none" aria-label="Customer thank-you post for a water feature job"></video></div>
-          <div><p>"You definitely put your heart &amp; soul into all the work you do to make sure everything looks perfect!"</p><small>Water feature customer, Instagram</small></div>
-        </div>
-      </aside>
+    <div class="rev-head">
       <div>
-        <div class="rev-list" id="revList">
-          <article class="rev"><span class="qm" aria-hidden="true">“</span>
-            <div class="top"><span class="av">M</span><div class="who"><b>Michele C.</b><span class="stars">★★★★★</span> <span>May 2026</span></div></div>
-            <h3>"The best water feature repair company."</h3>
-            <p>Bryant Schell repaired our backyard water feature with his professionalism, expertise, experience and knowledge. Prior to receiving the best quality service from Schell Schock, <mark>I had three vendors stop by and no one could resolve this issue.</mark> Thank you Bryant. You provide the best customer service and the best repair service.</p>
-            <div class="src">Yelp review</div></article>
-          <article class="rev"><span class="qm" aria-hidden="true">“</span>
-            <div class="top"><span class="av">F</span><div class="who"><b>Frank F.</b><span class="stars">★★★★★</span> <span>April 2026</span></div></div>
-            <h3>"They saved our pool in a big way."</h3>
-            <p>After having a new pool built (~30,000 gallons), the builder never came out to balance the water or turn on the pumps. The water was starting to turn green after 2 days. We called Schell Shock and <mark>the owner Bryant came over ASAP</mark> and balanced out the pool water and made sure the filtration system was set up. He came back several times to check on the pool, and even took the time to show me how to use the features when the builder still has not.</p>
-            <div class="src">Yelp review</div></article>
-          <article class="rev"><span class="qm" aria-hidden="true">“</span>
-            <div class="top"><span class="av">M</span><div class="who"><b>Mitchell L.</b><span class="stars">★★★★★</span> <span>San Tan Valley · Oct 2025</span></div></div>
-            <h3>"Our jacuzzi is sparkling, functioning like new!"</h3>
-            <p>Heard about this company through our community website, rave reviews, so gave him a try. Our built in Jacuzzi needed a drain and clean to start the fall season. <mark>Bryant returned call immediately, was on time for appointment</mark>, and went well out of his way to accommodate the rainy weekend and his other work. Bryant is a fine gentleman, and I highly recommend him.</p>
-            <div class="src">Yelp review</div></article>
-          <article class="rev"><span class="qm" aria-hidden="true">“</span>
-            <div class="top"><span class="av">B</span><div class="who"><b>Bob L.</b><span class="stars">★★★★★</span> <span>San Tan Valley · April 2025</span></div></div>
-            <h3>"Outstanding fountain repair and irrigation services!"</h3>
-            <p>After struggling to find someone who could fix our unique fountain/firepit, <mark>Bryant was the only one up to the task.</mark> He not only diagnosed the issues but completely refurbished it with a new pump, automated pond light system, and additional enhancements. Bryant and his wife run this family-owned business with exceptional customer service and fair pricing.</p>
-            <div class="src">Yelp review</div></article>
+        <span class="eyebrow rv">The case files</span>
+        <h2 class="display rv d1" id="rev-title">When nobody else could fix it, <span class="it">they called Bryant.</span></h2>
+      </div>
+      <div class="rating-pill rv d2"><b>5.0</b><div><span class="stars" aria-label="5 out of 5 stars">★★★★★</span><small>Every review on Google &amp; Yelp</small></div></div>
+    </div>
+
+    <div class="cases rv" id="cases" aria-roledescription="carousel" aria-label="Customer reviews">
+      <div class="stage" id="stage">
+        <video muted loop playsinline preload="none" id="stageVid" poster="assets/vid/review.jpg" aria-hidden="true"></video>
+        <div class="segs" id="segs" aria-hidden="true"></div>
+        <div class="who-chip swap" id="chip"></div>
+        <div class="stat-wrap swap" id="statWrap"><div class="stat" id="stat"></div><div class="stat-sub" id="statSub"></div></div>
+        <button class="tap l" id="tapL" aria-label="Previous review"></button>
+        <button class="tap r" id="tapR" aria-label="Next review"></button>
+      </div>
+      <div class="case">
+        <div class="swap" id="caseBody" aria-live="polite"></div>
+        <div class="case-nav">
+          <div class="picks" id="picks" role="group" aria-label="Choose a review"></div>
+          <div class="arrows"><button id="prevC" aria-label="Previous review"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button><button id="nextC" aria-label="Next review"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
         </div>
-        <div class="rev-dots" id="revDots" aria-hidden="true"></div>
       </div>
     </div>
   </div>
+  <div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker">
+    <span>"The best water feature repair company."</span><span>"They saved our pool in a big way."</span><span>"Our jacuzzi is sparkling, functioning like new!"</span><span>"Bryant was the only one up to the task."</span><span>"Heart &amp; soul into all the work you do."</span><span>"Bryant is a fine gentleman."</span><span>"Exceptional customer service and fair pricing."</span><span>"The owner Bryant came over ASAP."</span>
+  </div></div>
 </section>
 
 <!-- 6. STORY -->
@@ -976,7 +995,7 @@ onScroll();
 var mq = document.getElementById('mq'); mq.innerHTML += mq.innerHTML;
 
 /* reveals (also triggers the review highlighter) */
-var rvs = document.querySelectorAll('.rv, .rev');
+var rvs = document.querySelectorAll('.rv');
 if (RM || !('IntersectionObserver' in window)) { rvs.forEach(function(e){ e.classList.add('in'); }); }
 else {
   var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, {rootMargin:'0px 0px -8% 0px', threshold:.08});
@@ -1035,7 +1054,82 @@ function dots(track, itemSel, dotsEl){
     for (var j = 0; j < ds.length; j++) ds[j].classList.toggle('on', j === best); }, {passive:true});
 }
 dots(document.getElementById('gets'), '.get', document.getElementById('svcDots'));
-dots(document.getElementById('revList'), '.rev', document.getElementById('revDots'));
+
+/* reviews: case files stories */
+(function(){
+  var C = [
+    {n:'Michele C.', a:'M', src:'Yelp', when:'May 2026', k:'Case 01 · Water feature repair', stat:'3', sub:'vendors came out before Bryant. None could fix it.',
+     h:'"The best water feature repair company."',
+     p:'Backyard water feature broken. Three different vendors stopped by and couldn\'t resolve it.', f:'Bryant diagnosed it and repaired it with his expertise and experience.', r:'"The best customer service and the best repair service."',
+     q:'Bryant Schell repaired our backyard water feature with his professionalism, expertise, experience and knowledge. Prior to receiving the best quality service from Schell Schock, <mark>I had three vendors stop by and no one could resolve this issue.</mark> Thank you Bryant.'},
+    {n:'Frank F.', a:'F', src:'Yelp', when:'April 2026', k:'Case 02 · New pool startup', stat:'2 <em>days</em>', sub:'from brand new pool to turning green.',
+     h:'"They saved our pool in a big way."',
+     p:'New ~30,000 gallon pool. The builder never balanced the water or turned on the pumps.', f:'Bryant came over ASAP, balanced the water, set up filtration and came back several times to check.', r:'A healthy new pool, plus a walkthrough of how to use the features.',
+     q:'We called Schell Shock and <mark>the owner Bryant came over ASAP</mark> and balanced out the pool water for the first time and made sure the filtration system was set up. He even took the time to show me some of the features and how to use them when the builder still has not.'},
+    {n:'Mitchell L.', a:'M', src:'Yelp', when:'Oct 2025 · San Tan Valley', k:'Case 03 · Spa drain & clean', stat:'On <em>time</em>', sub:'with a call returned immediately, even on a rainy weekend.',
+     h:'"Our jacuzzi is sparkling, functioning like new!"',
+     p:'Built-in jacuzzi needed a drain and clean to start the fall season.', f:'Bryant returned the call immediately, showed up on time and worked around a rainy weekend.', r:'"Sparkling, functioning like new!"',
+     q:'Heard about this company through our community website, rave reviews, so gave him a try. <mark>Bryant returned call immediately, was on time for appointment</mark>, and went well out of his way to accommodate the rainy weekend and his other work. Bryant is a fine gentleman, and I highly recommend him.'},
+    {n:'Bob L.', a:'B', src:'Yelp', when:'April 2025 · San Tan Valley', k:'Case 04 · Fountain & irrigation', stat:'Only <em>one</em>', sub:'pro was up to the task on their unique fountain and firepit.',
+     h:'"Outstanding fountain repair and irrigation services!"',
+     p:'A custom fountain/firepit nobody could fix.', f:'Diagnosed it, then refurbished it with a new pump and automated pond lights. Installed a smart sprinkler timer too.', r:'"Exceptional customer service and fair pricing."',
+     q:'After struggling to find someone who could fix our unique fountain/firepit, <mark>Bryant was the only one up to the task.</mark> Bryant and his wife run this family-owned business with exceptional customer service and fair pricing.'},
+    {n:'Water feature customer', a:'♥', src:'Instagram', when:'Shared on Instagram', k:'Case 05 · Water feature', stat:'', sub:'', vid:'assets/vid/review.mp4',
+     h:'"You definitely put your heart & soul into it."',
+     p:'A backyard water feature that needed bringing back to life.', f:'Bryant did the job, start to finish.', r:'A happy customer who posted a thank-you shout-out.',
+     q:'Thank you Bryant @schellshockllc for the amazing job on our water feature! <mark>You definitely put your heart &amp; soul into all the work you do</mark> to make sure everything looks perfect!'}
+  ];
+  var stage = document.getElementById('stage'), vid = document.getElementById('stageVid'), segs = document.getElementById('segs'), chip = document.getElementById('chip');
+  var statWrap = document.getElementById('statWrap'), stat = document.getElementById('stat'), statSub = document.getElementById('statSub'), body = document.getElementById('caseBody'), picks = document.getElementById('picks');
+  var cur = 0, DUR = 9000, t0 = 0, paused = false, inView = false, raf = 0, elapsed = 0;
+  C.forEach(function(c, i){
+    segs.appendChild(document.createElement('i'));
+    var b = document.createElement('button'); b.className = 'pick'; b.type = 'button'; b.innerHTML = '<i>' + c.a + '</i>' + c.n.split(' ')[0];
+    b.setAttribute('aria-pressed', i === 0 ? 'true' : 'false'); b.addEventListener('click', function(){ show(i, true); }); picks.appendChild(b);
+  });
+  function paint(i){
+    var c = C[i];
+    chip.innerHTML = '<span class="av">' + c.a + '</span><div>' + c.n + '<br><span>' + c.src + ' · ' + c.when + '</span></div><span class="stars">★★★★★</span>';
+    stat.innerHTML = c.stat; statSub.textContent = c.sub;
+    if (c.vid){ if (!vid.src) vid.src = c.vid; stage.classList.add('vid'); var pr = vid.play(); if (pr && pr.catch) pr.catch(function(){}); }
+    else { stage.classList.remove('vid'); vid.pause(); }
+    body.innerHTML = '<span class="k">' + c.k + '</span><h3>' + c.h + '</h3>' +
+      '<ol class="flow"><li><i>1</i><div><b>The problem</b><span>' + c.p + '</span></div></li><li><i>2</i><div><b>What Bryant did</b><span>' + c.f + '</span></div></li><li><i>3</i><div><b>The result</b><span>' + c.r + '</span></div></li></ol>' +
+      '<blockquote>' + c.q + '<cite><span class="stars">★★★★★</span>' + c.n + ', ' + c.src + ' review</cite></blockquote>';
+    [].forEach.call(picks.children, function(p, j){ p.setAttribute('aria-pressed', j === i ? 'true' : 'false'); });
+    var active = picks.children[i]; if (active && picks.scrollWidth > picks.clientWidth) picks.scrollTo({left: active.offsetLeft - 20, behavior: 'smooth'});
+  }
+  function show(i, user){
+    cur = (i + C.length) % C.length; elapsed = 0; t0 = performance.now();
+    if (RM){ paint(cur); setSegs(); return; }
+    statWrap.classList.add('out'); chip.classList.add('out'); body.classList.add('out');
+    setTimeout(function(){ paint(cur); statWrap.classList.remove('out'); chip.classList.remove('out'); body.classList.remove('out'); }, 300);
+    setSegs();
+  }
+  function setSegs(f){ [].forEach.call(segs.children, function(s, j){ s.style.setProperty('--f', j < cur ? 1 : j > cur ? 0 : (f || 0)); }); }
+  function tick(now){
+    if (!paused && inView){ var f = (elapsed + (now - t0)) / DUR; setSegs(Math.min(1, f)); if (f >= 1){ show(cur + 1); } }
+    raf = requestAnimationFrame(tick);
+  }
+  function pause(){ if (!paused){ elapsed += performance.now() - t0; paused = true; } }
+  function resume(){ if (paused){ t0 = performance.now(); paused = false; } }
+  document.getElementById('tapL').addEventListener('click', function(){ show(cur - 1, true); });
+  document.getElementById('tapR').addEventListener('click', function(){ show(cur + 1, true); });
+  document.getElementById('prevC').addEventListener('click', function(){ show(cur - 1, true); });
+  document.getElementById('nextC').addEventListener('click', function(){ show(cur + 1, true); });
+  var box = document.getElementById('cases');
+  box.addEventListener('pointerenter', function(e){ if (e.pointerType === 'mouse') pause(); });
+  box.addEventListener('pointerleave', function(e){ if (e.pointerType === 'mouse') resume(); });
+  box.addEventListener('focusin', pause); box.addEventListener('focusout', resume);
+  var sx = 0; stage.addEventListener('touchstart', function(e){ sx = e.touches[0].clientX; }, {passive:true});
+  stage.addEventListener('touchend', function(e){ var dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 40){ show(cur + (dx < 0 ? 1 : -1), true); } }, {passive:true});
+  paint(0); setSegs(0);
+  if (!RM){
+    new IntersectionObserver(function(es){ var v = es[0].isIntersecting; if (v && !inView){ t0 = performance.now(); } else if (!v && inView){ elapsed += performance.now() - t0; } inView = v; }, {threshold:.35}).observe(box);
+    raf = requestAnimationFrame(tick);
+  }
+  var tk = document.getElementById('ticker'); tk.innerHTML += tk.innerHTML;
+})();
 
 /* reels nav + drag */
 var track = document.getElementById('reelTrack');
