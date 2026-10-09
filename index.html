@@ -360,13 +360,14 @@ section{position:relative}
 .reviews{background:linear-gradient(180deg,var(--surface) 0%,var(--surface) 70%,var(--surface-2) 100%);overflow:hidden}
 .reviews .eyebrow{color:var(--blue)}
 .rev-head{display:flex;justify-content:space-between;align-items:end;gap:18px 40px;flex-wrap:wrap}
+.rev-head h2{max-width:14em}
 .rating-pill{display:flex;align-items:center;gap:14px;padding:12px 18px 12px 14px;border-radius:999px;background:var(--navy);color:#fff;box-shadow:0 20px 40px -24px rgba(10,45,124,.8);margin-bottom:.6em}
 .rating-pill b{font-family:var(--serif);font-size:38px;line-height:1;font-weight:600}
 .rating-pill .stars{font-size:16px;display:block;letter-spacing:2px}
 .rating-pill small{display:block;font-size:12px;font-weight:700;opacity:.8;letter-spacing:.04em}
 .cases{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(20px,3.5vw,48px);margin-top:36px;align-items:stretch}
 .cases > *{min-width:0}
-.stage{position:relative;border-radius:32px;overflow:hidden;min-height:520px;color:#fff;isolation:isolate;background:#04163d;box-shadow:0 50px 90px -45px rgba(5,23,55,.85)}
+.stage{position:relative;border-radius:32px;overflow:hidden;min-height:440px;color:#fff;isolation:isolate;background:#04163d;box-shadow:0 50px 90px -45px rgba(5,23,55,.85)}
 .stage::before{content:"";position:absolute;inset:-20%;z-index:-2;background:radial-gradient(40% 40% at 30% 30%,rgba(69,208,230,.55),transparent 70%),radial-gradient(45% 45% at 75% 70%,rgba(29,87,209,.7),transparent 70%),radial-gradient(35% 35% at 60% 20%,rgba(165,240,251,.35),transparent 70%);filter:blur(10px);animation:drift 14s ease-in-out infinite alternate}
 @keyframes drift{to{transform:translate3d(6%,-4%,0) rotate(8deg) scale(1.08)}}
 .stage::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.35;background:repeating-radial-gradient(circle at 70% 120%,transparent 0 22px,rgba(255,255,255,.06) 23px 24px)}
@@ -391,7 +392,7 @@ section{position:relative}
 .case{display:flex;flex-direction:column;background:var(--surface-2);border:1px solid var(--line);border-radius:32px;padding:clamp(22px,3vw,40px);box-shadow:0 30px 60px -40px rgba(10,30,70,.4)}
 .case .k{font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--blue)}
 .case h3{font-family:var(--serif);font-weight:600;font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.05;margin:.3em 0 .6em;color:var(--text)}
-.flow{list-style:none;margin:0 0 22px;padding:0;display:grid;gap:0;position:relative}
+.flow{list-style:none;margin:0 0 22px;padding:0;display:none;gap:0;position:relative}
 .flow li{display:grid;grid-template-columns:34px 1fr;gap:14px;padding-bottom:16px;position:relative}
 .flow li::before{content:"";position:absolute;left:16px;top:30px;bottom:0;width:2px;background:linear-gradient(var(--aqua),transparent)}
 .flow li:last-child::before{display:none}
@@ -401,7 +402,7 @@ section{position:relative}
 .flow li:nth-child(3) i{background:var(--aqua);color:var(--navy-900)}
 .flow b{display:block;font-size:11.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--text-2);margin-top:1px}
 .flow span{display:block;color:var(--text);font-size:15.5px;line-height:1.45;margin-top:2px}
-.case blockquote{margin:0;padding:18px 20px;border-radius:20px;background:var(--surface);border:1px solid var(--line);font-size:15px;line-height:1.6;color:var(--text-2);position:relative}
+.case blockquote{margin:0;padding:22px 24px;border-radius:20px;background:var(--surface);border:1px solid var(--line);font-size:16px;line-height:1.6;color:var(--text-2);position:relative}
 .case blockquote::before{content:"“";position:absolute;right:14px;top:-18px;font-family:var(--serif);font-size:90px;line-height:1;color:var(--aqua);opacity:.6}
 .case blockquote mark{background:linear-gradient(transparent 58%,rgba(69,208,230,.55) 58%) no-repeat 0 0/0% 100%;color:var(--text);padding:0 2px;animation:hl 1.1s var(--ease) .5s forwards}
 @keyframes hl{to{background-size:100% 100%}}
@@ -433,6 +434,52 @@ section{position:relative}
   .picks::-webkit-scrollbar{display:none}
   .pick{flex:none}
   .arrows{justify-content:flex-end;display:none}
+}
+
+
+/* ===== compact mobile: services + reviews fit one screen ===== */
+.case .qt{margin:0}
+.more-btn{border:0;background:none;padding:6px 0 0;color:var(--blue);font-weight:800;font-size:13px;letter-spacing:.04em;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:700px){
+  .pad{padding-block:56px}
+  #services .svc-head h2,#reviews h2{font-size:1.7rem;margin:.25em 0 .3em}
+  #services .lede{font-size:.98rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin:0}
+  #services .gets{margin-top:18px}
+  .get{padding:10px;gap:4px}
+  .get .vid{aspect-ratio:16/7.5;border-radius:16px}
+  .get .txt{padding:8px 6px 6px}
+  .get .num{font-size:16px}
+  .get h3{font-size:1.5rem;margin:.05em 0 .25em}
+  .get p{font-size:14.5px;line-height:1.5;margin:0 0 10px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .get .proof,.get ul{display:none}
+  .get .more{font-size:15px}
+  .swipe-dots{margin-top:12px}
+
+  .rev-head{flex-wrap:nowrap;align-items:flex-start;gap:12px}
+  .rating-pill{flex:none;flex-direction:column;gap:2px;padding:10px 12px;border-radius:18px;margin:0;text-align:center}
+  .rating-pill b{font-size:28px}.rating-pill .stars{font-size:11px;letter-spacing:1px}.rating-pill small{display:none}
+  .cases{margin-top:16px;gap:0}
+  .stage{min-height:0;height:166px;border-radius:24px 24px 0 0;box-shadow:none}
+  .segs{top:12px;left:14px;right:14px}
+  .who-chip{top:24px;left:14px;right:14px;font-size:12.5px}
+  .who-chip .av{width:28px;height:28px;font-size:12px}
+  .stat-wrap{padding:62px 18px 12px;justify-content:flex-end}
+  .stat{font-size:2.5rem}
+  .stat-sub{font-size:.9rem;margin-top:4px}
+  .case{border-radius:0 0 24px 24px;border-top:0;padding:14px 16px 12px}
+  .case .k{font-size:10.5px}
+  .case h3{display:none}
+  .case .k{display:block;margin-bottom:8px}
+  .case .qt{font-size:14px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:9;-webkit-box-orient:vertical;overflow:hidden}
+  .case .qt.open{display:block;overflow:visible}
+  .flow{display:none}
+  .case blockquote{padding:12px 14px;font-size:14.5px;border-radius:14px}
+  .case blockquote::before{font-size:60px;top:-12px}
+  .case cite{margin-top:6px;font-size:12px}
+  .case-nav{padding-top:10px}
+  .pick{padding:4px 10px 4px 4px;font-size:12.5px}.pick i{width:22px;height:22px;font-size:11px}
+  .ticker{margin-top:22px}
+  .ticker span{font-size:16px;padding:9px 14px}
 }
 
 /* ===== 6. STORY ===== */
@@ -1061,19 +1108,19 @@ dots(document.getElementById('gets'), '.get', document.getElementById('svcDots')
     {n:'Michele C.', a:'M', src:'Yelp', when:'May 2026', k:'Case 01 · Water feature repair', stat:'3', sub:'vendors couldn\'t fix it. Bryant did.',
      h:'"The best water feature repair company."',
      p:'Backyard water feature broken. Three different vendors stopped by and couldn\'t resolve it.', f:'Bryant diagnosed it and repaired it with his expertise and experience.', r:'"The best customer service and the best repair service."',
-     q:'Bryant Schell repaired our backyard water feature with his professionalism, expertise, experience and knowledge. Prior to receiving the best quality service from Schell Schock, <mark>I had three vendors stop by and no one could resolve this issue.</mark> Thank you Bryant.'},
-    {n:'Frank F.', a:'F', src:'Yelp', when:'April 2026', k:'Case 02 · New pool startup', stat:'<em>ASAP</em>', sub:'Bryant came straight over and saved a brand new pool from going green.',
+     q:"This is the best water feature repair company. Bryant Schell repaired our backyard water feature with his professionalism, expertise, experience and knowledge. Prior to receiving the best quality service from Schell Schock, <mark>I had three vendors stop by and no one could resolve this issue.</mark> Thank you Bryant. You provide the best customer service and the best repair service."},
+    {n:'Frank F.', a:'F', src:'Yelp', when:'April 2026', k:'Case 02 · New pool startup', stat:'<em>ASAP</em>', sub:'Bryant came straight over and saved a brand new pool.',
      h:'"They saved our pool in a big way."',
      p:'New ~30,000 gallon pool. The builder never balanced the water or turned on the pumps.', f:'Bryant came over ASAP, balanced the water, set up filtration and came back several times to check.', r:'A healthy new pool, plus a walkthrough of how to use the features.',
-     q:'We called Schell Shock and <mark>the owner Bryant came over ASAP</mark> and balanced out the pool water for the first time and made sure the filtration system was set up. He even took the time to show me some of the features and how to use them when the builder still has not.'},
+     q:"After having a new pool built ~30,000 gallons, the builder never came out after water was put in and never added chemicals to balance them for the first time or to turn on the pumps to filter the water. The water was starting to turn green after 2 days. We called Schell Shock and <mark>the owner Bryant came over ASAP</mark> and balanced out pool water for the first time and to make sure the filtration system was set up. He came back several times to check on the pool and to make sure the chemicals were all perfect and swept the pool numerous times. <mark>They saved our pool in a big way.</mark> He even took the time to show me some of the features and how to use them when the builder still has not. Thank you Bryant."},
     {n:'Mitchell L.', a:'M', src:'Yelp', when:'Oct 2025 · San Tan Valley', k:'Case 03 · Spa drain & clean', stat:'On <em>time</em>', sub:'with a call returned immediately, even on a rainy weekend.',
      h:'"Our jacuzzi is sparkling, functioning like new!"',
      p:'Built-in jacuzzi needed a drain and clean to start the fall season.', f:'Bryant returned the call immediately, showed up on time and worked around a rainy weekend.', r:'"Sparkling, functioning like new!"',
-     q:'Heard about this company through our community website, rave reviews, so gave him a try. <mark>Bryant returned call immediately, was on time for appointment</mark>, and went well out of his way to accommodate the rainy weekend and his other work. Bryant is a fine gentleman, and I highly recommend him.'},
+     q:"Heard about this Company through our community website, rave reviews, so gave him a try. Our built in Jacuzzi needed a drain and clean to start the fall season. <mark>Bryant returned call immediately, was on time for appointment</mark>, and went well out of his way to accommodate the rainy weekend and his other work. Bottom line, our jacuzzi is sparkling, functioning like new! Bryant is a fine gentleman, and I highly recommend him."},
     {n:'Bob L.', a:'B', src:'Yelp', when:'April 2025 · San Tan Valley', k:'Case 04 · Fountain & irrigation', stat:'Only <em>one</em>', sub:'pro was up to the task on their unique fountain and firepit.',
      h:'"Outstanding fountain repair and irrigation services!"',
      p:'A custom fountain/firepit nobody could fix.', f:'Diagnosed it, then refurbished it with a new pump and automated pond lights. Installed a smart sprinkler timer too.', r:'"Exceptional customer service and fair pricing."',
-     q:'After struggling to find someone who could fix our unique fountain/firepit, <mark>Bryant was the only one up to the task.</mark> Bryant and his wife run this family-owned business with exceptional customer service and fair pricing.'},
+     q:"We had an outstanding experience with Bryant Schell, the owner of Schell Shock LLC. Bryant repaired our custom backyard fountain and installed a new sprinkler timer at our home in San Tan Valley. After struggling to find someone who could fix our unique fountain/firepit, <mark>Bryant was the only one up to the task.</mark> He not only diagnosed the issues but completely refurbished it with a new pump, automated pond light system, and additional enhancements that improved their functionality and appearance. He also installed an advanced \"Orbit b-hyve\" Smart Sprinkler Timer, which has been a game-changer. The timer allows us to program the sprinkler system remotely and includes an \"Automatic Smart Watering\" feature that adapts to our region's extreme weather fluctuations. Bryant and his wife run this family-owned business with exceptional customer service and fair pricing. We are beyond impressed and highly recommend Schell Shock LLC to anyone looking for quality work and professionalism. Thank you, Bryant, for a job well done!"},
     {n:'Water feature customer', a:'♥', src:'Instagram', when:'Shared on Instagram', k:'Case 05 · Water feature', stat:'', sub:'', vid:'assets/vid/review.mp4',
      h:'"You definitely put your heart & soul into it."',
      p:'A backyard water feature that needed bringing back to life.', f:'Bryant did the job, start to finish.', r:'A happy customer who posted a thank-you shout-out.',
@@ -1081,6 +1128,7 @@ dots(document.getElementById('gets'), '.get', document.getElementById('svcDots')
   ];
   var stage = document.getElementById('stage'), vid = document.getElementById('stageVid'), segs = document.getElementById('segs'), chip = document.getElementById('chip');
   var statWrap = document.getElementById('statWrap'), stat = document.getElementById('stat'), statSub = document.getElementById('statSub'), body = document.getElementById('caseBody'), picks = document.getElementById('picks');
+  var MOB = matchMedia('(max-width:700px)');
   var cur = 0, DUR = 9000, t0 = 0, paused = false, inView = false, raf = 0, elapsed = 0;
   C.forEach(function(c, i){
     segs.appendChild(document.createElement('i'));
@@ -1095,8 +1143,10 @@ dots(document.getElementById('gets'), '.get', document.getElementById('svcDots')
     else { stage.classList.remove('vid'); vid.pause(); }
     body.innerHTML = '<span class="k">' + c.k + '</span><h3>' + c.h + '</h3>' +
       '<ol class="flow"><li><i>1</i><div><b>The problem</b><span>' + c.p + '</span></div></li><li><i>2</i><div><b>What Bryant did</b><span>' + c.f + '</span></div></li><li><i>3</i><div><b>The result</b><span>' + c.r + '</span></div></li></ol>' +
-      '<blockquote>' + c.q + '<cite><span class="stars">★★★★★</span>' + c.n + ', ' + c.src + ' review</cite></blockquote>';
+      '<blockquote><p class="qt">' + c.q + '</p><button type="button" class="more-btn" hidden>Read full review</button><cite><span class="stars">★★★★★</span>' + c.n + ', ' + c.src + ' review</cite></blockquote>';
     [].forEach.call(picks.children, function(p, j){ p.setAttribute('aria-pressed', j === i ? 'true' : 'false'); });
+    var qt = body.querySelector('.qt'), mb = body.querySelector('.more-btn');
+    requestAnimationFrame(function(){ if (qt.scrollHeight > qt.clientHeight + 4){ mb.hidden = false; mb.onclick = function(){ var o = qt.classList.toggle('open'); mb.textContent = o ? 'Show less' : 'Read full review'; if (o) pause(); }; } });
     var active = picks.children[i]; if (active && picks.scrollWidth > picks.clientWidth) picks.scrollTo({left: active.offsetLeft - 20, behavior: 'smooth'});
   }
   function show(i, user){
